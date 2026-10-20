@@ -1,0 +1,4 @@
+code;name;description
+ADMIN;Amministratore;Accesso completo a tutte le funzioni
+EDITOR;Editor;Può creare e modificare i contenuti
+VIEWER;Visualizzatore;Accesso in sola lettura

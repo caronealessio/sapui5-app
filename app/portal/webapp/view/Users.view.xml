@@ -1,0 +1,79 @@
+<mvc:View
+	controllerName="my.portal.controller.Users"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:table="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<f:DynamicPage id="usersPage">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>usersPageTitle}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox>
+				<!-- Elenco degli utenti con genere e ruolo: clic su una riga per aprire il form dell'utente -->
+				<table:Table
+					id="usersTable"
+					rows="{/Users}"
+					selectionBehavior="RowOnly"
+					selectionMode="Single"
+					rowActionCount="1"
+					rowSelectionChange=".onRowSelectionChange">
+					<table:rowActionTemplate>
+						<table:RowAction>
+							<table:RowActionItem type="Navigation" press=".onRowActionPress"/>
+						</table:RowAction>
+					</table:rowActionTemplate>
+					<table:extension>
+						<OverflowToolbar>
+							<Title text="{i18n>usersTableTitle}"/>
+						</OverflowToolbar>
+					</table:extension>
+					<table:columns>
+						<table:Column>
+							<Label text="{i18n>firstNameLabel}"/>
+							<table:template>
+								<Text text="{firstName}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label text="{i18n>lastNameLabel}"/>
+							<table:template>
+								<Text text="{lastName}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label text="{i18n>emailLabel}"/>
+							<table:template>
+								<Text text="{email}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label text="{i18n>birthDateLabel}"/>
+							<table:template>
+								<Text text="{birthDate}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label text="{i18n>genderLabel}"/>
+							<table:template>
+								<Text text="{gender/name}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label text="{i18n>roleLabel}"/>
+							<table:template>
+								<Text text="{role/name}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+					</table:columns>
+				</table:Table>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

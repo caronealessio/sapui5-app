@@ -1,0 +1,86 @@
+<mvc:View
+	controllerName="my.portal.controller.Roles"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:table="sap.ui.table"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<f:DynamicPage id="rolesPage">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="{i18n>rolesPageTitle}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:content>
+			<VBox>
+				<!-- Elenco dei ruoli -->
+				<table:Table
+					id="rolesTable"
+					rows="{/Roles}"
+					selectionBehavior="RowOnly"
+					selectionMode="Single"
+					rowSelectionChange=".onRowSelectionChange">
+					<table:extension>
+						<OverflowToolbar>
+							<Title text="{i18n>rolesTableTitle}"/>
+						</OverflowToolbar>
+					</table:extension>
+					<table:columns>
+						<table:Column>
+							<Label text="{i18n>roleCodeLabel}"/>
+							<table:template>
+								<Text text="{code}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label text="{i18n>roleNameLabel}"/>
+							<table:template>
+								<Text text="{name}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+						<table:Column>
+							<Label text="{i18n>roleDescriptionLabel}"/>
+							<table:template>
+								<Text text="{description}" wrapping="false"/>
+							</table:template>
+						</table:Column>
+					</table:columns>
+				</table:Table>
+
+				<!-- Dettaglio modificabile del ruolo selezionato: le modifiche vengono salvate in automatico -->
+				<Panel id="detailPanel" headerText="{i18n>roleDetailPanelTitle}" visible="false">
+					<form:Form id="detailForm" editable="true">
+						<form:layout>
+							<form:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>
+						</form:layout>
+						<form:formContainers>
+							<form:FormContainer>
+								<form:formElements>
+									<form:FormElement label="{i18n>roleCodeLabel}">
+										<form:fields>
+											<Text text="{code}"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>roleNameLabel}">
+										<form:fields>
+											<Input value="{name}"/>
+										</form:fields>
+									</form:FormElement>
+									<form:FormElement label="{i18n>roleDescriptionLabel}">
+										<form:fields>
+											<TextArea value="{description}" rows="3"/>
+										</form:fields>
+									</form:FormElement>
+								</form:formElements>
+							</form:FormContainer>
+						</form:formContainers>
+					</form:Form>
+				</Panel>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

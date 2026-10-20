@@ -1,0 +1,127 @@
+{
+	"_version": "2.0.0",
+
+	"sap.app": {
+		"id": "my.portal",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "${version}"
+		},
+		"dataSources": {
+			"default": {
+				"uri": "/odata/v4/user/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "@ui5/mcp-server:ts",
+			"version": "0.3.2"
+		}
+	},
+
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "my.portal.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+
+		"dependencies": {
+			"minUI5Version": "1.153.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.f": {},
+				"sap.ui.table": {},
+				"sap.tnt": {}
+			}
+		},
+
+		"flexEnabled": false,
+
+		"handleValidation": true,
+
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "my.portal.i18n.i18n",
+					"async": true
+				}
+			},
+			"": {
+				"dataSource": "default",
+				"preload": true,
+				"settings": {
+					"autoExpandSelect": true,
+					"earlyRequests": true,
+					"operationMode": "Server"
+				}
+			}
+		},
+
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"type": "View",
+				"viewType": "XML",
+				"path": "my.portal.view",
+				"controlId": "pageContainer",
+				"controlAggregation": "pages"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "users",
+					"target": "users"
+				},
+				{
+					"pattern": "users/{userId}",
+					"name": "userDetail",
+					"target": "userDetail"
+				},
+				{
+					"pattern": "roles",
+					"name": "roles",
+					"target": "roles"
+				}
+			],
+			"targets": {
+				"users": {
+					"id": "users",
+					"name": "Users"
+				},
+				"userDetail": {
+					"id": "userDetail",
+					"name": "UserDetail"
+				},
+				"roles": {
+					"id": "roles",
+					"name": "Roles"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,78 @@
+<mvc:View
+	controllerName="my.portal.controller.UserDetail"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+
+	<!-- Form dell'utente: la view viene collegata all'utente indicato nella route -->
+	<Page
+		id="userDetailPage"
+		title="{firstName} {lastName}"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+		<content>
+			<form:Form id="userForm" editable="true" title="{i18n>userFormTitle}">
+				<form:layout>
+					<form:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>
+				</form:layout>
+				<form:formContainers>
+					<!-- Dati anagrafici -->
+					<form:FormContainer title="{i18n>personalDataSectionTitle}">
+						<form:formElements>
+							<form:FormElement label="{i18n>firstNameLabel}">
+								<form:fields>
+									<Input value="{firstName}" required="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>lastNameLabel}">
+								<form:fields>
+									<Input value="{lastName}" required="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>birthDateLabel}">
+								<form:fields>
+									<DatePicker value="{birthDate}"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>genderLabel}">
+								<form:fields>
+									<Select
+										id="genderSelect"
+										selectedKey="{gender_code}"
+										forceSelection="false"
+										items="{path: '/Genders', templateShareable: false}">
+										<core:Item key="{code}" text="{name}"/>
+									</Select>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+
+					<!-- Dati di accesso -->
+					<form:FormContainer title="{i18n>accountSectionTitle}">
+						<form:formElements>
+							<form:FormElement label="{i18n>emailLabel}">
+								<form:fields>
+									<Input value="{email}" type="Email" required="true"/>
+								</form:fields>
+							</form:FormElement>
+							<form:FormElement label="{i18n>roleLabel}">
+								<form:fields>
+									<Select
+										id="roleSelect"
+										selectedKey="{role_code}"
+										forceSelection="false"
+										items="{path: '/Roles', templateShareable: false}">
+										<core:Item key="{code}" text="{name}"/>
+									</Select>
+								</form:fields>
+							</form:FormElement>
+						</form:formElements>
+					</form:FormContainer>
+				</form:formContainers>
+			</form:Form>
+		</content>
+	</Page>
+</mvc:View>

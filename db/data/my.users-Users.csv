@@ -1,0 +1,6 @@
+ID;firstName;lastName;email;birthDate;gender_code;role_code
+1b6c2e40-0000-4000-8000-000000000001;Mario;Rossi;mario.rossi@example.com;1985-03-12;M;ADMIN
+1b6c2e40-0000-4000-8000-000000000002;Giulia;Bianchi;giulia.bianchi@example.com;1990-07-25;F;EDITOR
+1b6c2e40-0000-4000-8000-000000000003;Luca;Verdi;luca.verdi@example.com;1978-11-02;M;VIEWER
+1b6c2e40-0000-4000-8000-000000000004;Sara;Neri;sara.neri@example.com;1995-01-18;F;EDITOR
+1b6c2e40-0000-4000-8000-000000000005;Alex;Galli;alex.galli@example.com;1988-09-30;X;VIEWER

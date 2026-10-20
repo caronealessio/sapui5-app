@@ -1,0 +1,41 @@
+<mvc:View
+	controllerName="my.portal.controller.App"
+	displayBlock="true"
+	height="100%"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:tnt="sap.tnt">
+
+	<!-- Layout principale: barra in alto, menu laterale a sinistra, pagine al centro -->
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button
+					icon="sap-icon://menu2"
+					type="Transparent"
+					tooltip="{i18n>sideNavigationToggleTooltip}"
+					press=".onSideNavigationToggle"/>
+				<Title text="{i18n>appTitle}" level="H1"/>
+			</tnt:ToolHeader>
+		</tnt:header>
+
+		<!-- Menu laterale sinistro -->
+		<tnt:sideContent>
+			<tnt:SideNavigation
+				id="sideNavigation"
+				ariaLabel="{i18n>sideNavigationAriaLabel}"
+				itemSelect=".onSideNavigationItemSelect">
+				<tnt:NavigationList>
+					<tnt:NavigationListItem key="users" text="{i18n>usersMenuItem}" icon="sap-icon://person-placeholder"/>
+					<tnt:NavigationListItem key="roles" text="{i18n>rolesMenuItem}" icon="sap-icon://role"/>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+
+		<!-- Contenitore in cui il router inserisce le pagine (Utenti, Form utente, Ruoli) -->
+		<tnt:mainContents>
+			<NavContainer id="pageContainer"/>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+
+</mvc:View>
